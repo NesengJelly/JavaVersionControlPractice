@@ -1,15 +1,67 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+class Book {
+    private String title;
+    private String author;
+    private int stock;
+    private double price;
+
+    private static final double DISCOUNT_RATE = 0.1;
+    public double calculateDiscount() {
+        return price - (price * DISCOUNT_RATE);
+    }
+    // Getter & Setter
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
+
+    public int getStock() { return stock; }
+    public void setStock(int stock) { this.stock = stock; }
+
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+
+    // Display info (sekarang lebih rapi)
+    public void displayInfo() {
+        System.out.println("Title: " + getTitle());
+        System.out.println("Author: " + getAuthor());
+        System.out.println("Stock: " + getStock());
+        System.out.println("Price after discount: " + calculateDiscount());
+    }
+}
+
+class Library {
+    private Book book;
+    private String location;
+
+    // Getter & Setter (Encapsulate Field)
+    public Book getBook() { return book; }
+    public void setBook(Book book) { this.book = book; }
+
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+
+    public void displayLibraryInfo() {
+        System.out.println("Library location: " + getLocation());
+        if (book != null) {
+            book.displayInfo();
+        }
+    }
+}
+
+// 🚚 Move Method: pindahkan main() ke class Main
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Book book = new Book();
+        book.setTitle("Pemrograman Java");
+        book.setAuthor("Milan N");
+        book.setStock(10);
+        book.setPrice(120000);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Library library = new Library();
+        library.setBook(book);
+        library.setLocation("UMM Library");
+
+        library.displayLibraryInfo();
     }
 }

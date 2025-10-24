@@ -1,67 +1,46 @@
+// Versi awal: Menggunakan akses langsung (tanpa Getter/Setter) dan tanpa enkapsulasi
+// Logika Library bisa digabungkan ke Main untuk kesederhanaan.
+
 class Book {
-    private String title;
-    private String author;
-    private int stock;
-    private double price;
+    public String title;
+    public String author;
+    public int stock;
+    public double price;
 
     private static final double DISCOUNT_RATE = 0.1;
+
+    // Logika diskon tetap ada, karena ini adalah fungsi inti class
     public double calculateDiscount() {
         return price - (price * DISCOUNT_RATE);
     }
-    // Getter & Setter
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
 
-    public String getAuthor() { return author; }
-    public void setAuthor(String author) { this.author = author; }
-
-    public int getStock() { return stock; }
-    public void setStock(int stock) { this.stock = stock; }
-
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
-
-    // Display info (sekarang lebih rapi)
+    // Method untuk menampilkan info
     public void displayInfo() {
-        System.out.println("Title: " + getTitle());
-        System.out.println("Author: " + getAuthor());
-        System.out.println("Stock: " + getStock());
+        System.out.println("Title: " + title);
+        System.out.println("Author: " + author);
+        System.out.println("Stock: " + stock);
         System.out.println("Price after discount: " + calculateDiscount());
     }
 }
 
-class Library {
-    private Book book;
-    private String location;
 
-    // Getter & Setter (Encapsulate Field)
-    public Book getBook() { return book; }
-    public void setBook(Book book) { this.book = book; }
-
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
-
-    public void displayLibraryInfo() {
-        System.out.println("Library location: " + getLocation());
-        if (book != null) {
-            book.displayInfo();
-        }
-    }
-}
-
-// 🚚 Move Method: pindahkan main() ke class Main
 public class Main {
     public static void main(String[] args) {
+        // Objek Book
         Book book = new Book();
-        book.setTitle("Pemrograman Java");
-        book.setAuthor("Milan N");
-        book.setStock(10);
-        book.setPrice(120000);
 
-        Library library = new Library();
-        library.setBook(book);
-        library.setLocation("UMM Library");
+        // Mengakses dan mengubah properti secara langsung
+        book.title = "Pemrograman Java";
+        book.author = "Milan N";
+        book.stock = 10;
+        book.price = 120000;
 
-        library.displayLibraryInfo();
+        // Simulasi Library (disimpan sebagai variabel lokal sederhana)
+        String libraryLocation = "UMM Library";
+
+        System.out.println("Library location: " + libraryLocation);
+
+        // Memanggil method dari objek Book
+        book.displayInfo();
     }
 }

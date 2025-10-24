@@ -16,7 +16,7 @@ class Book {
 
     // Method untuk menampilkan info
     public void displayInfo() {
-        System.out.println("Title: " + title);
+        System.out.println("judul: " + title);
         System.out.println("Author: " + author);
         System.out.println("Stock: " + stock);
         System.out.println("Price after discount: " + calculateDiscount());
